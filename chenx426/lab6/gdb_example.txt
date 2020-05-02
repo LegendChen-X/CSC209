@@ -1,0 +1,2322 @@
+Script started on 2020-02-12 16:01:01-0500
+]0;chenx426@wolf:/h/u15/c9/00/chenx426/chenx426/lab6wolf:~/chenx426/lab6$ gcc -Wall -g -[K[K[K[Ks[K-std=gnu99 -g -o overflow overflow.c
+]0;chenx426@wolf:/h/u15/c9/00/chenx426/chenx426/lab6wolf:~/chenx426/lab6$ gdb
+GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+(gdb) b 36
+No symbol table is loaded.  Use the "file" command.
+(gdb) brea[K[K[K[Kquit
+]0;chenx426@wolf:/h/u15/c9/00/chenx426/chenx426/lab6wolf:~/chenx426/lab6$ gdb overflow
+GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from overflow...done.
+(gdb) b 36
+Breakpoint 1 at 0x959: file overflow.c, line 36.
+(gdb) display i
+No symbol "i" in current context.
+(gdb) r
+Starting program: /h/u15/c9/00/chenx426/chenx426/lab6/overflow 
+Address of the variables:
+7fffffffe990 -> &after[0]
+7fffffffe994 -> &after[1]
+7fffffffe998 -> &after[2]
+7fffffffe99c -> &after[3]
+7fffffffe980 -> &a[0]
+7fffffffe984 -> &a[1]
+7fffffffe988 -> &a[2]
+7fffffffe98c -> &a[3]
+7fffffffe970 -> &before[0]
+7fffffffe974 -> &before[1]
+7fffffffe978 -> &before[2]
+7fffffffe97c -> &before[3]
+7fffffffe96c -> &i
+7fffffffe968 -> &index
+
+Initial values:
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+
+
+Breakpoint 1, main () at overflow.c:36
+36          for (i = 0; i < OVERFLOW; i++) {
+(gdb) display i
+1: i = 0
+(gdb) display before
+2: before = {10, 10, 10, 10}
+(gdb) display afet[K[Kter
+3: after = {10, 10, 10, 10}
+(gdb) display a
+4: a = {0, 0, 0, 0}
+(gdb) n
+37              a[i] = i * 10;
+1: i = 0
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 0, 0, 0}
+(gdb) n
+38              printf("i = %d\n", i);
+1: i = 0
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 0, 0, 0}
+(gdb) n
+i = 0
+39              printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+1: i = 0
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 0, 0, 0}
+(gdb) n
+before = {10, 10, 10, 10}
+40              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 0
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 0, 0, 0}
+(gdb) n
+a = {0, 0, 0, 0}
+41              printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+1: i = 0
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 0, 0, 0}
+(gdb) n
+after = {10, 10, 10, 10}
+36          for (i = 0; i < OVERFLOW; i++) {
+1: i = 0
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 0, 0, 0}
+(gdb) n
+37              a[i] = i * 10;
+1: i = 1
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 0, 0, 0}
+(gdb) n
+38              printf("i = %d\n", i);
+1: i = 1
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 0, 0}
+(gdb) n
+i = 1
+39              printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+1: i = 1
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 0, 0}
+(gdb) n
+before = {10, 10, 10, 10}
+40              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 1
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 0, 0}
+(gdb) n
+a = {0, 10, 0, 0}
+41              printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+1: i = 1
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 0, 0}
+(gdb) n
+after = {10, 10, 10, 10}
+36          for (i = 0; i < OVERFLOW; i++) {
+1: i = 1
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 0, 0}
+(gdb) n
+37              a[i] = i * 10;
+1: i = 2
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 0, 0}
+(gdb) n
+38              printf("i = %d\n", i);
+1: i = 2
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 20, 0}
+(gdb) n
+i = 2
+39              printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+1: i = 2
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 20, 0}
+(gdb) n
+before = {10, 10, 10, 10}
+40              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 2
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 20, 0}
+(gdb) n
+a = {0, 10, 20, 0}
+41              printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+1: i = 2
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 20, 0}
+(gdb) n
+after = {10, 10, 10, 10}
+36          for (i = 0; i < OVERFLOW; i++) {
+1: i = 2
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 20, 0}
+(gdb) n
+37              a[i] = i * 10;
+1: i = 3
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 20, 0}
+(gdb) n
+38              printf("i = %d\n", i);
+1: i = 3
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+i = 3
+39              printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+1: i = 3
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+before = {10, 10, 10, 10}
+40              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 3
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+a = {0, 10, 20, 30}
+41              printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+1: i = 3
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+after = {10, 10, 10, 10}
+36          for (i = 0; i < OVERFLOW; i++) {
+1: i = 3
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+37              a[i] = i * 10;
+1: i = 4
+2: before = {10, 10, 10, 10}
+3: after = {10, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+38              printf("i = %d\n", i);
+1: i = 4
+2: before = {10, 10, 10, 10}
+3: after = {40, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+i = 4
+39              printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+1: i = 4
+2: before = {10, 10, 10, 10}
+3: after = {40, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+before = {10, 10, 10, 10}
+40              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 4
+2: before = {10, 10, 10, 10}
+3: after = {40, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+a = {0, 10, 20, 30}
+41              printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+1: i = 4
+2: before = {10, 10, 10, 10}
+3: after = {40, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+after = {40, 10, 10, 10}
+36          for (i = 0; i < OVERFLOW; i++) {
+1: i = 4
+2: before = {10, 10, 10, 10}
+3: after = {40, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+44          return 0;
+1: i = 5
+2: before = {10, 10, 10, 10}
+3: after = {40, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+45      }
+1: i = 5
+2: before = {10, 10, 10, 10}
+3: after = {40, 10, 10, 10}
+4: a = {0, 10, 20, 30}
+(gdb) n
+__libc_start_main (main=0x55555555473a <main>, argc=1, argv=0x7fffffffea98, init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7fffffffea88) at ../csu/libc-start.c:344
+344     ../csu/libc-start.c: No such file or directory.
+(gdb) print &after[0]
+No symbol "after" in current context.
+(gdb) qi[Kuit
+A debugging session is active.
+
+        Inferior 1 [process 13588] will be killed.
+
+Quit anyway? (y or n) y
+]0;chenx426@wolf:/h/u15/c9/00/chenx426/chenx426/lab6wolf:~/chenx426/lab6$ gdb overflow
+GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from overflow...done.
+(gdb) r
+Starting program: /h/u15/c9/00/chenx426/chenx426/lab6/overflow 
+Address of the variables:
+7fffffffe990 -> &after[0]
+7fffffffe994 -> &after[1]
+7fffffffe998 -> &after[2]
+7fffffffe99c -> &after[3]
+7fffffffe980 -> &a[0]
+7fffffffe984 -> &a[1]
+7fffffffe988 -> &a[2]
+7fffffffe98c -> &a[3]
+7fffffffe970 -> &before[0]
+7fffffffe974 -> &before[1]
+7fffffffe978 -> &before[2]
+7fffffffe97c -> &before[3]
+7fffffffe96c -> &i
+7fffffffe968 -> &index
+
+Initial values:
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+i = 1
+before = {10, 10, 10, 10}
+a = {0, 10, 0, 0}
+after = {10, 10, 10, 10}
+i = 2
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 0}
+after = {10, 10, 10, 10}
+i = 3
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {10, 10, 10, 10}
+i = 4
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 10, 10, 10}
+[Inferior 1 (process 14103) exited normally]
+(gdb) b 36
+Breakpoint 1 at 0x555555554959: file overflow.c, line 36.
+(gdb) s[Kdisplay i
+No symbol "i" in current context.
+(gdb) r
+Starting program: /h/u15/c9/00/chenx426/chenx426/lab6/overflow 
+Address of the variables:
+7fffffffe990 -> &after[0]
+7fffffffe994 -> &after[1]
+7fffffffe998 -> &after[2]
+7fffffffe99c -> &after[3]
+7fffffffe980 -> &a[0]
+7fffffffe984 -> &a[1]
+7fffffffe988 -> &a[2]
+7fffffffe98c -> &a[3]
+7fffffffe970 -> &before[0]
+7fffffffe974 -> &before[1]
+7fffffffe978 -> &before[2]
+7fffffffe97c -> &before[3]
+7fffffffe96c -> &i
+7fffffffe968 -> &index
+
+Initial values:
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+
+
+Breakpoint 1, main () at overflow.c:36
+36          for (i = 0; i < OVERFLOW; i++) {
+(gdb) display i
+1: i = 0
+(gdb) diplay a
+Undefined command: "diplay".  Try "help".
+(gdb) display a
+2: a = {0, 0, 0, 0}
+(gdb) display before
+3: before = {10, 10, 10, 10}
+(gdb) display after
+4: after = {10, 10, 10, 10}
+(gdb) n
+37              a[i] = i * 10;
+1: i = 0
+2: a = {0, 0, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+38              printf("i = %d\n", i);
+1: i = 0
+2: a = {0, 0, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+i = 0
+39              printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+1: i = 0
+2: a = {0, 0, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+before = {10, 10, 10, 10}
+40              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 0
+2: a = {0, 0, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+a = {0, 0, 0, 0}
+41              printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+1: i = 0
+2: a = {0, 0, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+after = {10, 10, 10, 10}
+36          for (i = 0; i < OVERFLOW; i++) {
+1: i = 0
+2: a = {0, 0, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+37              a[i] = i * 10;
+1: i = 1
+2: a = {0, 0, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+38              printf("i = %d\n", i);
+1: i = 1
+2: a = {0, 10, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+i = 1
+39              printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+1: i = 1
+2: a = {0, 10, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+before = {10, 10, 10, 10}
+40              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 1
+2: a = {0, 10, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+a = {0, 10, 0, 0}
+41              printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+1: i = 1
+2: a = {0, 10, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+after = {10, 10, 10, 10}
+36          for (i = 0; i < OVERFLOW; i++) {
+1: i = 1
+2: a = {0, 10, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+37              a[i] = i * 10;
+1: i = 2
+2: a = {0, 10, 0, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+38              printf("i = %d\n", i);
+1: i = 2
+2: a = {0, 10, 20, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+i = 2
+39              printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+1: i = 2
+2: a = {0, 10, 20, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+before = {10, 10, 10, 10}
+40              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 2
+2: a = {0, 10, 20, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+a = {0, 10, 20, 0}
+41              printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+1: i = 2
+2: a = {0, 10, 20, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+after = {10, 10, 10, 10}
+36          for (i = 0; i < OVERFLOW; i++) {
+1: i = 2
+2: a = {0, 10, 20, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+37              a[i] = i * 10;
+1: i = 3
+2: a = {0, 10, 20, 0}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+38              printf("i = %d\n", i);
+1: i = 3
+2: a = {0, 10, 20, 30}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+i = 3
+39              printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+1: i = 3
+2: a = {0, 10, 20, 30}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+before = {10, 10, 10, 10}
+40              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 3
+2: a = {0, 10, 20, 30}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+a = {0, 10, 20, 30}
+41              printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+1: i = 3
+2: a = {0, 10, 20, 30}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+after = {10, 10, 10, 10}
+36          for (i = 0; i < OVERFLOW; i++) {
+1: i = 3
+2: a = {0, 10, 20, 30}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+37              a[i] = i * 10;
+1: i = 4
+2: a = {0, 10, 20, 30}
+3: before = {10, 10, 10, 10}
+4: after = {10, 10, 10, 10}
+(gdb) n
+38              printf("i = %d\n", i);
+1: i = 4
+2: a = {0, 10, 20, 30}
+3: before = {10, 10, 10, 10}
+4: after = {40, 10, 10, 10}
+(gdb) n
+i = 4
+39              printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+1: i = 4
+2: a = {0, 10, 20, 30}
+3: before = {10, 10, 10, 10}
+4: after = {40, 10, 10, 10}
+(gdb) print a[K&after[0]
+$1 = (int *) 0x7fffffffe990
+(gdb) print &a[5[K4]
+$2 = (int *) 0x7fffffffe990
+(gdb) quit
+A debugging session is active.
+
+        Inferior 1 [process 14176] will be killed.
+
+Quit anyway? (y or n) y
+]0;chenx426@wolf:/h/u15/c9/00/chenx426/chenx426/lab6wolf:~/chenx426/lab6$ nano overflow.c
+[?1049h[22;0;0t[1;63r(B[m[4l[?7h[39;49m[?1h=[?1h=[?1h=[?25l[39;49m(B[m[H[2J[61;95H(B[0;7m[ Reading File ](B[m[61;94H(B[0;7m[ Read 45 lines ](B[m[H(B[0;7m  GNU nano 2.9.3                                                                                    overflow.c                                                                                              [1;203H(B[m[62d(B[0;7m^G(B[m Get Help[18G(B[0;7m^O(B[m Write Out     (B[0;7m^W(B[m Where Is[52G(B[0;7m^K(B[m Cut Text[69G(B[0;7m^J(B[m Justify[86G(B[0;7m^C(B[m Cur Pos[103G(B[0;7mM-U(B[m Undo[62;120H(B[0;7mM-A(B[m Mark Text    (B[0;7mM-](B[m To Bracket   (B[0;7mM-▲(B[m Previous     (B[0;7m^B(B[m Back[62;188H(B[0;7m^◀(B[m Prev Word[63d(B[0;7m^X(B[m Exit[63;18H(B[0;7m^R(B[m Read File     (B[0;7m^\(B[m Replace[52G(B[0;7m^U(B[m Uncut Text    (B[0;7m^T(B[m To Spell[86G(B[0;7m^_(B[m Go To Line    (B[0;7mM-E(B[m Redo[63;120H(B[0;7mM-6(B[m Copy Text    (B[0;7mM-W(B[m WhereIs Next (B[0;7mM-▼(B[m Next[63;171H(B[0;7m^F(B[m Forward[188G(B[0;7m^▶(B[m Next Word[61d[3d(B[0;1m[36m#include[39m(B[m (B[0;1m[33m<stdio.h>[5d[36m#define[39m(B[m (B[0;1m[31mSIZE[39m(B[m 4[6d(B[0;1m[36m#define[39m(B[m (B[0;1m[31mOVERFLOW[39m(B[m 5[8d[32mint[39m(B[m main() {[9;5H[32mint[39m(B[m index = 0;[10;5H[32mint[39m(B[m i;[11;5H[32mint[39m(B[m before[(B[0;1m[31mSIZE[39m(B[m] = {10, 10, 10, 10};[12;5H[32mint[39m(B[m a[(B[0;1m[31mSIZE[39m(B[m] = {0, 0, 0, 0};[13;5H[32mint[39m(B[m after[(B[0;1m[31mSIZE[39m(B[m] = {10, 10, 10, 10};[15;5Hprintf((B[0;1m[33m"Address of the variables:\n"[39m(B[m);[16;5H(B[0;1m[33mfor[39m(B[m (index = 0; index < (B[0;1m[31mSIZE[39m(B[m; index++) {[17;9Hprintf((B[0;1m[33m"%lx -> &after[%d]\n"[39m(B[m, ([32munsigned[39m(B[m [32mlong[39m(B[m) &after[index], index);[18;5H}[19d(B[0;1m[33mfor[39m(B[m (index = 0; index < (B[0;1m[31mSIZE[39m(B[m; index++) {[20;9Hprintf((B[0;1m[33m"%lx -> &a[%d]\n"[39m(B[m, ([32munsigned[39m(B[m [32mlong[39m(B[m) &a[index], index);[21;5H}[22d(B[0;1m[33mfor[39m(B[m (index = 0; index < (B[0;1m[31mSIZE[39m(B[m; index++) {[23;9Hprintf((B[0;1m[33m"%lx -> &before[%d]\n"[39m(B[m, ([32munsigned[39m(B[m [32mlong[39m(B[m) &before[index], index);[24;5H}[25dprintf((B[0;1m[33m"%lx -> &i\n"[39m(B[m, ([32munsigned[39m(B[m [32mlong[39m(B[m)&i);[26;5Hprintf((B[0;1m[33m"%lx -> &index\n"[39m(B[m, ([32munsigned[39m(B[m [32mlong[39m(B[m)&index);[27;5Hprintf((B[0;1m[33m"\n"[39m(B[m);[30;5Hprintf((B[0;1m[33m"Initial values:\n"[39m(B[m);[31;5Hprintf((B[0;1m[33m"i = %d\n"[39m(B[m, i);[32;5Hprintf((B[0;1m[33m"before = {%d, %d, %d, %d}\n"[39m(B[m, before[0], before[1], before[2], before[3]);[33;5Hprintf((B[0;1m[33m"a = {%d, %d, %d, %d}\n"[39m(B[m, a[0], a[1], a[2], a[3]);[34;5Hprintf((B[0;1m[33m"after = {%d, %d, %d, %d}\n"[39m(B[m, after[0], after[1], after[2], after[3]);[35;5Hprintf((B[0;1m[33m"\n"[39m(B[m);[38;5H(B[0;1m[33mfor[39m(B[m (i = 0; i < (B[0;1m[31mOVERFLOW[39m(B[m; i++) {[39;9Ha[i] = i * 10;[40;9Hprintf((B[0;1m[33m"i = %d\n"[39m(B[m, i);[41;9Hprintf((B[0;1m[33m"before = {%d, %d, %d, %d}\n"[39m(B[m, before[0], before[1], before[2], before[3]);[42;9Hprintf((B[0;1m[33m"a = {%d, %d, %d, %d}\n"[39m(B[m, a[0], a[1], a[2], a[3]);[43;9Hprintf((B[0;1m[33m"after = {%d, %d, %d, %d}\n"[39m(B[m, after[0], after[1], after[2], after[3]);[44;5H}[46d[35mreturn[39m(B[m 0;[47d}[3d[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l [?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[61d[K[6;17H[?12l[?25h[?25l [?12l[?25h[?25l[1;195H(B[0;7mModified(B[m[6;18H05[?12l[?25h[?25l5[K[?12l[?25h[?25l5[?12l[?25h[?25l0[?12l[?25h[?25l0[?12l[?25h[?25l0[?12l[?25h[?25l[61d(B[0;7mSave modified buffer?  (Answering "No" will DISCARD changes.)                                                                                                                                               [62;1H Y(B[m Yes[K[63d(B[0;7m N(B[m No  [63;17H(B[0;7m^C(B[m Cancel[K[61;63H[?12l[?25h[?25l[62d(B[0;7m^G(B[m Get Help[62;52H(B[0;7mM-D(B[m DOS Format[62;103H(B[0;7mM-A(B[m Append[62;154H(B[0;7mM-B(B[m Backup File[63d(B[0;7m^C(B[m Cancel[17G         [63;52H(B[0;7mM-M(B[m Mac Format[63;103H(B[0;7mM-P(B[m Prepend[63;154H(B[0;7m^T(B[m To Files[61d(B[0;7mFile Name to Write: overflow.c                               (B[m[61;31H[?12l[?25h[?25l[K[1;203H[1;195H(B[0;7m        (B[m[61;94H(B[0;7m[ Wrote 45 lines ](B[m[J[63;204H[?12l[?25h[63;1H[?1049l[23;0;0t[?1l>]0;chenx426@wolf:/h/u15/c9/00/chenx426/chenx426/lab6wolf:~/chenx426/lab6$ gcc -Wall -std [K=gnu99 -g -o overflow overflow.c
+]0;chenx426@wolf:/h/u15/c9/00/chenx426/chenx426/lab6wolf:~/chenx426/lab6$ ./[K[Kgdb overflow
+GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from overflow...done.
+(gdb) run
+Starting program: /h/u15/c9/00/chenx426/chenx426/lab6/overflow 
+Address of the variables:
+7fffffffe990 -> &after[0]
+7fffffffe994 -> &after[1]
+7fffffffe998 -> &after[2]
+7fffffffe99c -> &after[3]
+7fffffffe980 -> &a[0]
+7fffffffe984 -> &a[1]
+7fffffffe988 -> &a[2]
+7fffffffe98c -> &a[3]
+7fffffffe970 -> &before[0]
+7fffffffe974 -> &before[1]
+7fffffffe978 -> &before[2]
+7fffffffe97c -> &before[3]
+7fffffffe96c -> &i
+7fffffffe968 -> &index
+
+Initial values:
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+i = 1
+before = {10, 10, 10, 10}
+a = {0, 10, 0, 0}
+after = {10, 10, 10, 10}
+i = 2
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 0}
+after = {10, 10, 10, 10}
+i = 3
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {10, 10, 10, 10}
+i = 4
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 10, 10, 10}
+i = 5
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 10, 10}
+i = 6
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 10}
+i = 7
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 8
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 9
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 10
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 11
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 12
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 13
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 14
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 15
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 16
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 17
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 18
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 19
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 20
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 21
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 22
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 23
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 24
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 25
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 26
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 27
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 28
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 29
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 30
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 31
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 32
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 33
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 34
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 35
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 36
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 37
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 38
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 39
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 40
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 41
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 42
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 43
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 44
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 45
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 46
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 47
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 48
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 49
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 50
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 51
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 52
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 53
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 54
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 55
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 56
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 57
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 58
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 59
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 60
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 61
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 62
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 63
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 64
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 65
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 66
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 67
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 68
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 69
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 70
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 71
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 72
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 73
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 74
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 75
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 76
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 77
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 78
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 79
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 80
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 81
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 82
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 83
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 84
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 85
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 86
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 87
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 88
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 89
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 90
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 91
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 92
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 93
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 94
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 95
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 96
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 97
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 98
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 99
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 100
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 101
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 102
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 103
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 104
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 105
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 106
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 107
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 108
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 109
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 110
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 111
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 112
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 113
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 114
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 115
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 116
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 117
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 118
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 119
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 120
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 121
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 122
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 123
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 124
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 125
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 126
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 127
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 128
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 129
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 130
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 131
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 132
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 133
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 134
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 135
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 136
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 137
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 138
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 139
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 140
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 141
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 142
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 143
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 144
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 145
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 146
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 147
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 148
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 149
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 150
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 151
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 152
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 153
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 154
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 155
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 156
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 157
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 158
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 159
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 160
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 161
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 162
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 163
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 164
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 165
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 166
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 167
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 168
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 169
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 170
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 171
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 172
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 173
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 174
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 175
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 176
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 177
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 178
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 179
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 180
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 181
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 182
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 183
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 184
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 185
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 186
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 187
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 188
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 189
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 190
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 191
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 192
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 193
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 194
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 195
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 196
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 197
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 198
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 199
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 200
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 201
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 202
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 203
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 204
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 205
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 206
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 207
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 208
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 209
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 210
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 211
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 212
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 213
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 214
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 215
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 216
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 217
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 218
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 219
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 220
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 221
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 222
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 223
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 224
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 225
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 226
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 227
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 228
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 229
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 230
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 231
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 232
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 233
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 234
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 235
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 236
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 237
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 238
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 239
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 240
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 241
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 242
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 243
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 244
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 245
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 246
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 247
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 248
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 249
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 250
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 251
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 252
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 253
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 254
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 255
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 256
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 257
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 258
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 259
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 260
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 261
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 262
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 263
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 264
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 265
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 266
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 267
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 268
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 269
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 270
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 271
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 272
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 273
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 274
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 275
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 276
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 277
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 278
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 279
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 280
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 281
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 282
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 283
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 284
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 285
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 286
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 287
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 288
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 289
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 290
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 291
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 292
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 293
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 294
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 295
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 296
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 297
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 298
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 299
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 300
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 301
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 302
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 303
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 304
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 305
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 306
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 307
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 308
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 309
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 310
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 311
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 312
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 313
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 314
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 315
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 316
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 317
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 318
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 319
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 320
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 321
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 322
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 323
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 324
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 325
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 326
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 327
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 328
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 329
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 330
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 331
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 332
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 333
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 334
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 335
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 336
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 337
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 338
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 339
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 340
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 341
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 342
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 343
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 344
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 345
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 346
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 347
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 348
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 349
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 350
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 351
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 352
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 353
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 354
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 355
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 356
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 357
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 358
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 359
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 360
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 361
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 362
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 363
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 364
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 365
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 366
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 367
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 368
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 369
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 370
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 371
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 372
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 373
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 374
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 375
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 376
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 377
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 378
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 379
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 380
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 381
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 382
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 383
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 384
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 385
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 386
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 387
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 388
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 389
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 390
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 391
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 392
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 393
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 394
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 395
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 396
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 397
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 398
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 399
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 400
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 401
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 402
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 403
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 404
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 405
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 406
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 407
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 408
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 409
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 410
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 411
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 412
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 413
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 414
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+i = 415
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 50, 60, 70}
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000555555554979 in main () at overflow.c:37
+37              a[i] = i * 10;
+(gdb) backtrace
+#0  0x0000555555554979 in main () at overflow.c:37
+(gdb) display i
+1: i = 416
+(gdb) backtrace 
+#0  0x0000555555554979 in main () at overflow.c:37
+(gdb) backtrace full
+#0  0x0000555555554979 in main () at overflow.c:37
+        index = 4
+        i = 416
+        before = {10, 10, 10, 10}
+        a = {0, 10, 20, 30}
+        after = {40, 50, 60, 70}
+(gdb) quit
+A debugging session is active.
+
+        Inferior 1 [process 14793] will be killed.
+
+Quit anyway? (y or n) y
+]0;chenx426@wolf:/h/u15/c9/00/chenx426/chenx426/lab6wolf:~/chenx426/lab6$ exit
+exit
+
+Script done on 2020-02-12 16:08:13-0500
